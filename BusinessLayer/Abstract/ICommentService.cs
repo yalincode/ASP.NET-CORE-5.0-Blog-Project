@@ -9,6 +9,7 @@ namespace BusinessLayer.Abstract
 {
     public interface ICommentService
     {
+        
         void CommentAdd(Comment comment);
         //void CategoryDelete(Comment comment);
         //void CategoryUpdate(Comment comment);
