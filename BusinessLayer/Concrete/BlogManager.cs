@@ -16,20 +16,6 @@ namespace BusinessLayer.Concrete
         {
             _blogDal = blogDal;
         }
-        public void BlogAdd(Blog category)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void BlogDelete(Blog category)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void BlogUpdate(Blog category)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<Blog> GetBlogListWithCategory()
         {
@@ -46,6 +32,11 @@ namespace BusinessLayer.Concrete
             return _blogDal.GetListAll();
         }
 
+        public List<Blog> GetLast3Blog()
+        {
+            return _blogDal.GetListAll().Take(3).ToList();
+        }
+
         public List<Blog> GetBlogById(int id)
         {
             return _blogDal.GetListAll(X => X.BlogId == id);
@@ -54,6 +45,21 @@ namespace BusinessLayer.Concrete
         public List<Blog> GetBlogListByWriter(int id)
         {
             return _blogDal.GetListAll(x => x.WriterId == id);
+        }
+
+        public void TAdd(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TDelete(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TUpdate(Blog t)
+        {
+            throw new NotImplementedException();
         }
     }
 }
