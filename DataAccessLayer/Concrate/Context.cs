@@ -10,6 +10,7 @@ namespace DataAccessLayer.Concrate
 {
     public class Context:DbContext
     {
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=DESKTOP-E7SV85T\\S2019;database=CoreBlogDb; integrated security=true;");
@@ -23,5 +24,19 @@ namespace DataAccessLayer.Concrate
         public DbSet<NewsLetter> NewsLetters{ get; set; }
         public DbSet<BlogRating> BlogRatings { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Message2> Message2s { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Message2>().HasOne(x => x.SenderUser).WithMany(y => y.WriterSender).HasForeignKey(z=>z.SenderId).OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<Message2>().HasOne(x => x.RecieverUser).WithMany(y => y.WriterReciever).HasForeignKey(z => z.ReceiverId).OnDelete(DeleteBehavior.ClientSetNull);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
+
+    
 }
