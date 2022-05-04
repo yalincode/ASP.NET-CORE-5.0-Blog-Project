@@ -33,7 +33,7 @@ namespace CoreDemo
             //Proje seviyesi authorize iþlemi yapýlmasýný saðlayan metot.
             services.AddMvc(config =>
             {
-                var policy=new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
@@ -49,9 +49,9 @@ namespace CoreDemo
             services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan= TimeSpan.FromMinutes(5);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
-                options.LoginPath= "/login/index/";
+                options.LoginPath = "/login/index/";
                 options.SlidingExpiration = true;
             });
         }
@@ -85,6 +85,10 @@ namespace CoreDemo
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
