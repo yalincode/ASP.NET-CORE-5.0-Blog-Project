@@ -26,6 +26,7 @@ namespace DataAccessLayer.Concrate
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Message2> Message2s { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
