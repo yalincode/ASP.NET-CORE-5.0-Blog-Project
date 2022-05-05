@@ -22,11 +22,16 @@
     <tr>
         <th>@item.CategoryId</th>
         <td>@item.CategoryName</td>
-        <td><a href="#" class="btn btn-danger">Pasif Yap</a></td>
+        <td><a href="/admin/category/categorydelete/@item.CategoryId/" id="DeleteBtn" onclick="return confirm('Silmek istediğinize emin misiniz?')" class="btn btn-danger">Pasif Yap</a></td>
         <td><a href="#" class="btn btn-warning">Aktif Yap</a></td>
         <td><a href="#" class="btn btn-success">Düzenle</a></td>
     </tr>
 }
 </table>
+
+<a href="/Admin/Category/AddCategory/" class="btn btn-primary">Yeni Kategori</a>
+
+<br />
+<br />
 @*Sayfalama işlemleri için nugetten indirilip kullanıldı. X.PAGES*@
 @Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new {page}))
