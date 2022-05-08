@@ -1,3 +1,5 @@
+using DataAccessLayer.Concrate;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -54,6 +56,16 @@ namespace CoreDemo
                 options.LoginPath = "/login/index/";
                 options.SlidingExpiration = true;
             });
+
+
+            //IDENTITY nin çalýþmasý için bu servisler tanýmlandý.
+            services.AddDbContext<Context>();
+            services.AddIdentity<AppUser, AppRole>(x =>
+            {
+                //default kýsýtlamalarý kaldýrýr
+                x.Password.RequireUppercase = false;
+                x.Password.RequireNonAlphanumeric = false;
+            }).AddEntityFrameworkStores<Context>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
