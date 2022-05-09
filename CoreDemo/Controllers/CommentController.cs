@@ -7,7 +7,7 @@ using System;
 
 namespace CoreDemo.Controllers
 {
-    [AllowAnonymous]
+    
     public class CommentController : Controller
     {
         CommentManager cm = new CommentManager(new EfCommentRepository());

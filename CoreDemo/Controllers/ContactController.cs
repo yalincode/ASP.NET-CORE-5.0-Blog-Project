@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CoreDemo.Controllers
 {
-    [AllowAnonymous]
+    
     public class ContactController : Controller
     {
         ContactManager cm = new ContactManager(new EfContactRepository());
