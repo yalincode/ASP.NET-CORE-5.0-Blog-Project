@@ -35,6 +35,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword4">Şifre</label>
+                    <input type="text" asp-for="@Model.password" class="form-control" />
                     @*@Html.PasswordFor(x=>x.PasswordHash,new {@class="form-control"})*@
                 </div>
                 <div class="form-group">
@@ -52,7 +53,7 @@
                     @Html.TextAreaFor(x=>x.WriterAbout,10,3,new {@class="form-control"})
                     </div>*@
                 <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
-                <button class="btn btn-light">İptal</button>
+                <button class="btn btn-light" asp-action="index" asp-controller="dashboard">İptal</button>
             </form>
         </div>
     </div>

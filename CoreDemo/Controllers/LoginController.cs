@@ -71,6 +71,13 @@ namespace CoreDemo.Controllers
         //    }
 
         //}//claim ile login
+
+
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Login");
+        }
     }
 }
 //Context c = new Context();
